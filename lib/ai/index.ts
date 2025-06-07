@@ -14,7 +14,7 @@ const VALID_REASONING_MODELS = [
 ] as const;
 
 // Models that support JSON structured output
-const JSON_SUPPORTED_MODELS = ['gpt-4.1]' as const;
+const JSON_SUPPORTED_MODELS = ['gpt-4.1'] as const;
 
 // Helper to check if model supports JSON
 export const supportsJsonOutput = (modelId: string) =>
