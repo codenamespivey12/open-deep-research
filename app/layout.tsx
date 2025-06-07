@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { Toaster } from 'sonner';
 
 import { ThemeProvider } from '@/components/theme-provider';
@@ -52,7 +54,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased"><StackProvider app={stackServerApp}><StackTheme>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -65,7 +67,7 @@ export default async function RootLayout({
           </DeepResearchProvider>
         </ThemeProvider>
         <Analytics />
-      </body>
+      </StackTheme></StackProvider></body>
     </html>
   );
 }
