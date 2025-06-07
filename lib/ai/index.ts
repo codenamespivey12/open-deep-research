@@ -10,7 +10,7 @@ type ReasoningModel = typeof VALID_REASONING_MODELS[number];
 // Valid reasoning models that can be used for research analysis and structured outputs
 const VALID_REASONING_MODELS = [
   'o3','deepseek-ai/DeepSeek-R1',
-  'gpt-4o'
+  'gpt-4.1'
 ] as const;
 
 // Models that support JSON structured output
@@ -34,7 +34,7 @@ function getReasoningModel(modelId: string) {
   const configuredModel = REASONING_MODEL;
 
   if (!VALID_REASONING_MODELS.includes(configuredModel as ReasoningModel)) {
-    const fallback = 'o3;
+    const fallback = 'o3';
     console.warn(`Invalid REASONING_MODEL "${configuredModel}", falling back to ${fallback}`);
     return fallback;
   }
