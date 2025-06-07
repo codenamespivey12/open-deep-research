@@ -9,20 +9,19 @@ type ReasoningModel = typeof VALID_REASONING_MODELS[number];
 
 // Valid reasoning models that can be used for research analysis and structured outputs
 const VALID_REASONING_MODELS = [
-  'o1', 'o1-mini', 'o3-mini',
-  'deepseek-ai/DeepSeek-R1',
+  'o3','deepseek-ai/DeepSeek-R1',
   'gpt-4o'
 ] as const;
 
 // Models that support JSON structured output
-const JSON_SUPPORTED_MODELS = ['gpt-4o', 'gpt-4o-mini'] as const;
+const JSON_SUPPORTED_MODELS = ['gpt-4.1]' as const;
 
 // Helper to check if model supports JSON
 export const supportsJsonOutput = (modelId: string) =>
   JSON_SUPPORTED_MODELS.includes(modelId as typeof JSON_SUPPORTED_MODELS[number]);
 
 // Get reasoning model from env, with JSON support info
-const REASONING_MODEL = process.env.REASONING_MODEL || 'o1-mini';
+const REASONING_MODEL = process.env.REASONING_MODEL || 'o3';
 const BYPASS_JSON_VALIDATION = process.env.BYPASS_JSON_VALIDATION === 'true';
 
 // Helper to get the reasoning model based on user's selected model
@@ -35,7 +34,7 @@ function getReasoningModel(modelId: string) {
   const configuredModel = REASONING_MODEL;
 
   if (!VALID_REASONING_MODELS.includes(configuredModel as ReasoningModel)) {
-    const fallback = 'o1-mini';
+    const fallback = 'o3;
     console.warn(`Invalid REASONING_MODEL "${configuredModel}", falling back to ${fallback}`);
     return fallback;
   }
